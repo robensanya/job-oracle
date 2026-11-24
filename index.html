@@ -4,22 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Оракул трудоустройства</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f1e7">
 <style>
-:root{--bg:#FFF4E0;--ink:#1B1B2F;--card:#fff;--mute:#1B1B2F99;--dot:#1B1B2F22;--pink:#FF4D8D;--blue:#3D5AFE;--yellow:#FFD23F;--lime:#B6F44A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15122B;--ink:#FFF4E0;--card:#221E40;--mute:#FFF4E0aa;--dot:#ffffff18}}
-:root[data-theme="dark"]{--bg:#15122B;--ink:#FFF4E0;--card:#221E40;--mute:#FFF4E0aa;--dot:#ffffff18}
-html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;min-height:100%;background:radial-gradient(var(--dot) 1.5px,transparent 1.6px) 0 0/22px 22px,var(--bg);color:var(--ink);font:400 16px/1.4 Onest,system-ui,sans-serif;overflow-x:hidden;position:relative}
-body::before,body::after{content:"";position:absolute;z-index:0;border:3px solid var(--ink)}
-body::before{width:150px;height:150px;border-radius:50%;background:var(--pink);top:-50px;left:-40px}
-body::after{width:120px;height:120px;background:var(--lime);right:-30px;bottom:60px;transform:rotate(18deg);border-radius:24px}
-.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:22px 20px 28px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;min-height:100%;justify-content:center}
-.tag{font:600 11px Unbounded,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:var(--lime);color:#1B1B2F;border:2px solid var(--ink);padding:6px 12px;border-radius:99px;transform:rotate(-2deg)}
-h1{margin:0;font:800 clamp(30px,10vw,46px)/1.1 Onest,system-ui,sans-serif;letter-spacing:-.02em;text-wrap:balance}
-h1 mark{display:inline-block;margin-top:6px;background:var(--yellow);color:#1B1B2F;padding:0 10px 3px;border:3px solid var(--ink);border-radius:12px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-1.5deg)}
-svg{width:min(250px,70vw);height:auto;overflow:visible;animation:fl 4s ease-in-out infinite}
-@keyframes fl{50%{transform:translateY(-6px)}}
+:root {
+  color-scheme: light dark;
+  --paper: #f5f1e7; --ink: #27251f; --line: #938b7d; --accent: #93372b;
+  --card: #fff9e9; --blue: #465c99; --pink: #c56a52; --yellow: #e6bd66; --lime: #bac5a0;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #232422; --ink: #f4eddc; --line: #827e70; --accent: #efa68d; --card: #413e37; }
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif }
+main { width: min(960px, 90%); margin: clamp(24px, 8vh, 90px) auto 40px }
+header { border-block: 1px solid var(--ink); padding: 9px 0; display: flex; justify-content: space-between; gap: 12px }
+header, .folio { font: 12px/1.4 "Courier New", monospace; letter-spacing: .04em }
+h1 { font-weight: 400; font-size: clamp(32px, 6.6vw, 84px); line-height: 1.06; letter-spacing: -.055em; margin: .32em 0 .4em }
+.spread { display: grid; grid-template-columns: 38% 1fr; border-block: 1px solid var(--ink); padding: 26px 0; }
+.figure { align-self: stretch; display: grid; place-items: center; border-right: 1px solid var(--line); padding: 12px 8% 20px 0 }
+svg { display: block; width: min(100%, 300px); height: auto; overflow: visible }
+.reading { padding: 10px 12px 12px clamp(24px, 5vw, 70px); display: flex; align-items: flex-start; flex-direction: column }
+.folio { color: var(--accent); margin: 0 }
+#txt { margin: .65em 0 1em; font-size: clamp(25px, 3vw, 36px); line-height: 1.2; letter-spacing: -.025em; min-height: 4.8em; text-wrap: pretty }
+button { margin-top: auto; border: 0; padding: 12px 17px; background: var(--ink); color: var(--paper); font: 600 15px/1.4 system-ui, sans-serif; cursor: pointer }
+button:hover { background: var(--accent) }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px }
+button span { margin-left: .8em }
+@media (max-width: 620px) {
+  main { margin-top: 20px }
+  header { font-size: 11px }
+  .spread { grid-template-columns: 1fr; padding: 0 0 24px }
+  .figure { border-right: 0; padding: 8px 0 16px }
+  svg { width: min(48vw, 185px) }
+  .reading { border-top: 1px dotted var(--line); padding: 20px 0 0 }
+}
 #ballg{transform-origin:130px 180px}
 #ballg.go{animation:wob .7s ease}
 @keyframes wob{20%{transform:rotate(-7deg) scale(1.04)}45%{transform:rotate(6deg)}70%{transform:rotate(-3deg)}}
@@ -27,29 +45,16 @@ svg{width:min(250px,70vw);height:auto;overflow:visible;animation:fl 4s ease-in-o
 @keyframes bl{95%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
 .tw{transform-box:fill-box;transform-origin:center;animation:tw 2.4s ease-in-out infinite}
 @keyframes tw{50%{transform:scale(.55) rotate(45deg)}}
-.card{width:100%;box-sizing:border-box;background:var(--card);border:3px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--pink);padding:18px 18px 16px;min-height:150px;display:flex;flex-direction:column;gap:10px;justify-content:center;text-align:left}
-.card.pop{animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
-@keyframes pop{from{transform:scale(.94) rotate(-1deg);opacity:.2}}
-.lbl{align-self:flex-start;font:600 11px Unbounded,sans-serif;letter-spacing:.06em;text-transform:uppercase;background:var(--blue);color:#fff;padding:4px 9px;border-radius:8px}
-#txt{margin:0;font:600 18px/1.4 Onest,system-ui,sans-serif}
-.meter{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mute)}
-.meter div{display:flex;justify-content:space-between;gap:10px}
-.meter b{color:var(--ink);font-family:Unbounded,sans-serif}
-.track{height:12px;border:2px solid var(--ink);border-radius:99px;overflow:hidden}
-.fill{height:100%;width:0;background:var(--lime);border-right:2px solid var(--ink);transition:width .6s ease}
-button{width:100%;max-width:340px;font:800 16px Unbounded,sans-serif;background:var(--yellow);color:#1B1B2F;border:3px solid var(--ink);border-radius:16px;padding:16px 24px;box-shadow:5px 5px 0 var(--ink);cursor:pointer;transition:transform .08s,box-shadow .08s,background .2s}
-button:hover{background:var(--lime)}
-button:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
-button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-small{color:var(--mute);font-size:12px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important } }
 </style>
 </head>
 <body>
-<main class="wrap">
-  <div class="tag">Бюро прогнозов · отдел кадров вселенной</div>
-  <h1>Оракул <mark>трудоустройства</mark></h1>
-
+<main>
+  <header><span>Бюро прогнозов</span><span>Труд и карьера</span></header>
+  <h1>Оракул трудоустройства</h1>
+  <div class="spread">
+    <div class="figure">
   <svg id="art" viewBox="0 0 260 230" role="img" aria-label="Хрустальный шар с резюме и звёздочками">
     <g stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
       <ellipse cx="130" cy="216" rx="80" ry="8" fill="var(--ink)" opacity=".15" stroke="none"/>
@@ -71,133 +76,77 @@ small{color:var(--mute);font-size:12px}
       <circle cx="46" cy="30" r="7" fill="var(--yellow)"/>
     </g>
   </svg>
-
-  <div class="card" id="card" aria-live="polite">
-    <div class="lbl" id="lbl">Прогноз</div>
-    <p id="txt">Нажми на кнопку, и оракул скажет, что думает про твои отклики.</p>
-    <div class="meter" id="meter" hidden>
-      <div><span>Вероятность исполнения</span><b id="pct"></b></div>
-      <div class="track"><div class="fill" id="bar"></div></div>
-      <span id="vrd"></span>
+    </div>
+    <div class="reading">
+      <div aria-live="polite" aria-atomic="true">
+        <p class="folio" id="folio">На приёме у оракула</p>
+        <p id="txt">Что там с работой?</p>
+      </div>
+      <button id="go" type="button"><b id="action">Спросить шар</b><span aria-hidden="true">↗</span></button>
     </div>
   </div>
-
-  <button id="go" type="button">Получить предсказание</button>
-  <small id="foot"></small>
 </main>
-
 <script>
-const A=["Сегодня","Завтра","Во вторник","В среду ближе к вечеру","На этой неделе","В пятницу в 17:59","Через две недели","До конца месяца","К зиме","Сразу после обеда","После полнолуния","Ночью","Скоро","Очень скоро","В ближайший четверг","В этом квартале","Однажды утром","Ровно через 9 дней"];
-const B=[
-"рекрутёр напишет «Добрый день!» и исчезнет с чувством выполненного долга.",
-"тебе предложат тестовое на 6 часов «буквально на вечер».",
-"«дружный коллектив» из вакансии окажется чатом на 400 человек.",
-"придёт письмо «Мы вдохновлены вашим опытом». Вдохновение до оффера не дойдёт.",
-"ты найдёшь вакансию мечты. Требуется 7 лет опыта в технологии трёх лет от роду.",
-"HR назначит созвон на 15 минут, и он продлится 15 минут. Сенсация.",
-"кто-то из знакомых скажет «у нас как раз открылась вакансия». Ещё не открылась, но скажет.",
-"сопроводительное письмо получится тёплым, живым и абсолютно непрочитанным.",
-"на собеседовании спросят, кем ты видишь себя через пять лет. Честный ответ: «в отпуске».",
-"тебе позвонит незнакомый номер. Это не коллекторы, а рекрутёр. Почти наверняка.",
-"LinkedIn сообщит, что твой профиль смотрели три человека. Двое из них боты, третий ты.",
-"ты обновишь резюме, и оно впервые покажется тебе приличным.",
-"работодатель пообещает обратную связь «в течение недели». Какой именно недели, не уточнит.",
-"зарплатная вилка в объявлении окажется честной. Это почти мистика.",
-"бот-рекрутёр напишет тебе, и это будет самый вежливый диалог за месяц.",
-"твой отклик заметят. По ошибке, но заметят.",
-"оффер придёт ровно тогда, когда ты перестанешь проверять почту каждые 4 минуты.",
-"ты пройдёшь четыре этапа и узнаешь, что вакансию закрыли ради внутреннего кандидата.",
-"на созвоне зависнет камера, и ты станешь самым запоминающимся кандидатом.",
-"«динамичная среда» из описания расшифруется как «пожары по расписанию».",
-"ты найдёшь баг в тестовом задании и тактично покажешь его. Тебя оценят.",
-"рекрутёр скажет «мы вам перезвоним» и впервые сдержит слово.",
-"тебя пригласят на «неформальную встречу», где всё формально, кроме кофе.",
-"кто-то откликнется на твой пост «ищу работу», и это не будет МЛМ.",
-"твоё портфолио откроют на телефоне, и оно, к счастью, адаптивное.",
-"тебе предложат «гибкий график», то есть работать можно в любое время суток.",
-"ты узнаешь, что компания мечты тоже кого-то ищет. Прямо сейчас.",
-"HR спросит про ожидания по зарплате, и ты назовёшь цифру без нервного смеха.",
-"в спаме найдётся письмо с приглашением на интервью. Спам иногда лучше инбокса.",
-"ты допишешь резюме и поймёшь, что опыта у тебя больше, чем казалось.",
-"знакомый знакомого оставит рекомендацию. Знакомый знакомого легенда.",
-"нейросеть перепишет твоё резюме так, что ты сам захочешь себя нанять.",
-"после третьего «к сожалению» придёт первое «с удовольствием».",
-"работодатель оценит, что ты прочитал описание вакансии целиком. Редкий талант.",
-"собеседование отменят за 10 минут, а потом вернут. Нервы тоже вернут, с процентами.",
-"тебе скажут «вы нам подходите», и это даже будет правдой.",
-"в офисе обнаружится кофемашина. Это уже половина удачного оффера.",
-"ты откажешься от плохого оффера и впервые не почувствуешь вины.",
-"бывший коллега напишет «слушай, у нас тут есть место».",
-"тебе предложат стажировку «с перспективой». Перспектива будет в духе горизонта.",
-"HR добавит тебя в «пул талантов». Бассейн, к счастью, тёплый.",
-"в анкете попросят указать «увлечения». Ты наконец найдёшь слова, которые звучат не как «сериалы».",
-"тебе ответят в течение часа. Придётся срочно вспомнить, куда ты откликался.",
-"в офере будет написано «конкурентная зарплата». Конкурируют, видимо, между собой.",
-"ты поймаешь себя на том, что объясняешь пробел в резюме с блеском стендап-комика.",
-"на финальном этапе тебя спросят: «Вопросы есть?». Они будут, и очень хорошие."];
-const C=["Это не точно, но звучит красиво.","Главное не отвечай в ту же секунду.","Сохрани скриншот на память.","Звёзды в курсе, но молчат.","Выдохни, это тоже часть процесса.","Купи себе за это что-нибудь вкусное.","Резюме при этом можно не трогать.","Не благодари, это бесплатно.","Хорошая новость: хуже уже было.","Плохая новость: придётся подождать.","Совпадение с реальностью случайно, но приятно.","Рекомендуем отметить чаем.","Дальше по ситуации.","Это знак. Или просто четверг.","Расскажи кому-нибудь, чтобы сбылось.","Тебя это точно касается.","Проверено на трёх кандидатах.","Скажи «ну надо же» и улыбнись.","Всё идёт по плану. Плана нет, но идёт.","Не гоняй себя, ты и так молодец.","Вселенная всё видит и ведёт переписку.","Подробности придут по почте. Проверь спам.","Это ещё не оффер, но уже сюжет.","Дыши ровно, пиши коротко.","Мы в тебя верим. Рекрутёры тоже, просто молча.","Заранее выбери рубашку для камеры.","Если не сработает, сработает что-то другое.","Маме пока можно не рассказывать.","Подтверждено лунным календарём и таблицей Excel.","Дальше будет интереснее."];
-const S=[
-"Скоро тебя найдёт вакансия, которую ты не искал. Она окажется неплохой.",
-"Тебя ждёт оффер с зарплатой, при которой слово «вилка» не вызывает смеха.",
-"В этом месяце три отказа превратятся в одно «да». Математика не врёт.",
-"Твой следующий начальник читает те же мемы, что и ты. Совпадение случайно.",
-"Новая работа начнётся с понедельника. Понедельники пока не отменены.",
-"Скоро ты перестанешь бояться слова «испытательный срок» или хотя бы заменишь его на «пробную неделю».",
-"Рекрутёр признается, что тоже не до конца понимает, чем занимается эта должность. Вы подружитесь.",
-"Ты получишь оффер там, где совсем не ждал. Обычно так и бывает, просто об этом не пишут.",
-"Тебе предложат работу мечты, но на шаг левее, чем мечталось. Шаг окажется удобным.",
-"Одна из твоих отправленных анкет оживёт через полгода. Привет из прошлого!",
-"Скоро ты скажешь «я подумаю» и впервые это будет не вежливым отказом.",
-"Твой следующий офис будет с окнами. Это не шутка, это прогноз.",
-"На собеседовании ты случайно скажешь что-то умное. Запомни, как это было.",
-"Тебя возьмут не потому, что ты идеален, а потому что с тобой приятно. Лайфхак без лайфхаков.",
-"Вселенная готовит тебе вакансию. Задержка из-за согласований.",
-"Ты найдёшь работу, на которой не придётся делать вид, что любишь дедлайны.",
-"Скоро в твоём календаре появится слово «оффер». Желательно с подчёркиванием красным от радости.",
-"Рекрутёр, который однажды тебя проигнорировал, увидит твой профиль и тихо вздохнёт.",
-"В течение месяца ты три раза услышишь «мы вам напишем». Один из них не соврёт.",
-"Ты станешь тем самым кандидатом, о котором потом говорят: «Помнишь, мы его чуть не упустили?»",
-"Тебе выпадет шанс отказаться от работы, которая тебе не нужна. Наслаждайся.",
-"Грядёт неделя, когда всё сложится: резюме, письма, звонки. Правда, не помним, какая именно.",
-"Скоро ты скажешь «да» и сам удивишься, как просто это было.",
-"Твоё «спасибо за обратную связь» наконец-то будет искренним.",
-"Через пару откликов тебя позовут туда, где нужен именно ты, со всеми странностями.",
-"Пока ты тут нажимаешь кнопку, где-то открывается вакансия. Совпадение? Конечно.",
-"На новой работе тебя спросят: «А что ты любишь делать?». Ответ окажется практически рабочим.",
-"Тебя ждёт оффер, после которого резюме можно заархивировать с торжественной музыкой.",
-"Всё будет хорошо. Подробности согласуем с отделом кадров вселенной.",
-"Следующее «мы вам перезвоним» окажется звонком."];
+const forecasts = [
+  'На собеседовании попросят показать любимый проект. Ты откроешь его на той самой странице, которую обычно все пролистывают. «Подождите, а как вы это сделали?»',
+  'Бывшая коллега пришлёт скрин вакансии. Под ним будет второе сообщение, поважнее: «Я уже дала им твой контакт».',
+  'В пятницу в 17:58 придёт письмо «Есть минутка?». Внутри окажется оффер в PDF. Минутка найдётся.',
+  'В вакансии будет написано «чувство юмора обязательно». На вопрос, что случилось с предыдущим сотрудником, ответят: «Он теперь вас собеседует».',
+  'Ты спросишь, как выглядит обычный вторник в команде. Руководитель откроет календарь и скажет: «Вот этот созвон я, пожалуй, прямо сейчас отменю».',
+  'Письмо начнётся со слов «К сожалению». Дочитай. К сожалению, переговорка занята, поэтому познакомиться предлагают в кофейне этажом ниже.',
+  'Посреди собеседования в кадр войдёт собака. С той стороны позовут свою. Первые четыре минуты встречи в протокол не попадут.',
+  'Компания попросит контакты для рекомендаций. Через час бывший руководитель напишет: «Я им всё рассказал». Ещё через минуту: «Хорошее, господи».',
+  'Тебе дадут выбрать время встречи. В календаре найдётся слот после обеда, в котором ты уже умеешь разговаривать с людьми.',
+  'На вопрос о зарплате ты назовёшь сумму и потянешься за водой. Пока пьёшь, с той стороны успеют сказать «да».',
+  'В канале с вакансиями попадётся объявление на три строки. Третья будет с зарплатой. Ты даже вернёшься к первой, чтобы прочитать, кем работать.',
+  'К тестовому приложат образец готовой работы. По комментариям на полях ты поймёшь про будущего начальника больше, чем за два интервью.',
+  'Твоё резюме откроют из папки «На будущее». Оказывается, у будущего есть дата выхода и бюджет на ставку.',
+  'На финале разговор зайдёт о том, с кем тебе предстоит работать. Руководитель махнёт рукой за кадром. В кадр въедет на стуле Оля и расскажет всё гораздо понятнее.',
+  'Придёт отказ с толковой обратной связью. Последний абзац ты перешлёшь подруге со словами: «Так, оказывается, можно было».',
+  'На собеседовании спросят, какой проект не получился. Ты расскажешь, где всё пошло наперекосяк. Будущий коллега откроет блокнот: «А можно чуть медленнее? У нас сейчас ровно это».',
+  'В письме с темой «Уточнение» окажется пересмотренная сумма. Ты дважды сверишь цифры со старым письмом. Потом откроешь калькулятор. Всё верно.',
+  'Найдётся вакансия, которую ты ни за что не увидишь по названию. Настоящее название обнаружится внутри: ровно так ты уже три года объясняешь друзьям свою работу.',
+  'Кто-то сохранит твой пост про поиск работы и вспомнит о нём на планёрке. До тебя эта история дойдёт в пересказе на первом рабочем обеде.',
+  'На первом созвоне тебе покажут рабочий чат. Последнее сообщение там будет «я завтра к стоматологу». Под ним три сердечка, ни одного вопроса.',
+  'Ты закроешь вкладку с анкетой на восемь страниц. Через полчаса отправишь один короткий отклик туда, где давно хотелось работать. Именно его и откроют утром.',
+  'В оффере будет строка, которую захочется уточнить. Ты задашь вопрос. В ответ пришлют исправленный файл, и строка наконец будет значить ровно то, что в ней написано.',
+  'Один из собеседников принесёт на встречу распечатку твоего портфолио. На полях обнаружатся карандашные пометки. Тебе давно хотелось, чтобы кто-нибудь спросил именно об этом.',
+  'В первый рабочий день тебя добавят в чат «Обеды». Через полчаса ты будешь знать, у кого запасная зарядка, где приличный кофе и кому на самом деле писать про доступы.'
+];
 
-const T=A.length*B.length*C.length+S.length;
-const $=id=>document.getElementById(id);
-const rnd=n=>Math.floor(Math.random()*n);
-const labels=["Прогноз","Знак свыше","Оракул говорит","Из космоса","Срочно","Тайный прогноз","Шар видит"];
-const mouths=["M110 130q20 14 40 0","M112 134q18 -6 36 0","M110 126q20 20 40 0","M114 132h32","M110 128q20 10 40 -4"];
-const seen=[];
-function make(){
-  let t;
-  for(let i=0;i<40;i++){
-    t=Math.random()<.2?S[rnd(S.length)]:A[rnd(A.length)]+" "+B[rnd(B.length)]+" "+C[rnd(C.length)];
-    if(!seen.includes(t))break;
+const button = document.getElementById('go');
+const ball = document.getElementById('ballg');
+const mouth = document.getElementById('mouth');
+const expressions = ['M110 130q20 14 40 0', 'M112 130q17 8 34 -2', 'M112 128q18 18 36 0'];
+let deck = [];
+let previous;
+let issue = 0;
+
+function draw() {
+  if (deck.length === 0) {
+    deck = [...forecasts];
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    const last = deck.length - 1;
+    if (deck[last] === previous) {
+      [deck[0], deck[last]] = [deck[last], deck[0]];
+    }
   }
-  seen.push(t);if(seen.length>60)seen.shift();
-  return t;
+  previous = deck.pop();
+  return previous;
 }
-function verdict(p){return p<15?"почти невозможно, но красиво":p<40?"шансы есть, как у лотереи":p<65?"как повезёт, но скорее да":p<85?"вполне вероятно":"практически бухгалтерия"}
-$("foot").textContent="В базе "+T.toLocaleString("ru-RU")+" предсказаний. Совпадения с вашей реальностью случайны.";
-$("go").addEventListener("click",()=>{
-  const p=5+rnd(93);
-  $("txt").textContent=make();
-  $("lbl").textContent=labels[rnd(labels.length)];
-  $("pct").textContent=p+"%";
-  $("vrd").textContent=verdict(p);
-  $("meter").hidden=false;
-  $("bar").style.width="0";
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{$("bar").style.width=p+"%"}));
-  $("mouth").setAttribute("d",mouths[rnd(mouths.length)]);
-  const c=$("card"),b=$("ballg");
-  c.classList.remove("pop");b.classList.remove("go");void c.offsetWidth;
-  c.classList.add("pop");b.classList.add("go");
+
+button.addEventListener('click', () => {
+  issue++;
+  document.getElementById('folio').textContent = 'Прогноз № ' + String(issue).padStart(2, '0');
+  document.getElementById('txt').textContent = draw();
+  document.getElementById('action').textContent = 'Ещё прогноз';
+  mouth.setAttribute('d', expressions[issue % expressions.length]);
+  ball.classList.remove('go');
+  void ball.getBoundingClientRect();
+  ball.classList.add('go');
 });
 </script>
 </body>
